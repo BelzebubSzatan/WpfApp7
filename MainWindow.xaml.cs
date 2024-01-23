@@ -31,6 +31,24 @@ namespace WpfApp7 {
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e) {
+            switch(e.Key)
+            {
+                case Key.Escape:
+                    this.Close();
+                    break;
+                case Key.W:
+                    if (keyboardPlayer.Y <= 0)
+                        return;
+                    keyboardPlayer.Y -= 10;
+                    keyboardPlayer.Draw();
+                    break;
+                case Key.S:
+                    if (keyboardPlayer.Y + keyboardPlayer.Height >= MainCanvas.Height)
+                        return;
+                    keyboardPlayer.Y += 10;
+                    keyboardPlayer.Draw();
+                    break;
+            }
         }
 
         private void Window_MouseMove(object sender, MouseEventArgs e) {
