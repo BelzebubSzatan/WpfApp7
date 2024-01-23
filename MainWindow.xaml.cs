@@ -30,6 +30,20 @@ namespace WpfApp7 {
         }
 
         private void TimerTick(object? sender, EventArgs e) {
+            if (ball.X <= 0) {
+
+            }
+            if(ball.X>=MainCanvas.Width) {
+
+            }
+            if (ball.Y >= mousePlayer.Y && ball.Y <= mousePlayer.Y + mousePlayer.Height && ball.X >= mousePlayer.X - ball.Width && ball.X <= mousePlayer.X + mousePlayer.Width) {
+                ball.DirectionX *= -1;
+                ball.Speed += 0.5f;
+            }
+            if (ball.Y >= keyboardPlayer.Y && ball.Y <= keyboardPlayer.Y + keyboardPlayer.Height && ball.X <= keyboardPlayer.X + ball.Width && ball.X >= keyboardPlayer.X) {
+                ball.DirectionX *= -1;
+                ball.Speed += 0.5f;
+            }
             ball.Move();
         }
 
