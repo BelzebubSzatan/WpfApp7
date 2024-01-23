@@ -31,14 +31,13 @@ namespace WpfApp7 {
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e) {
-            if (Mouse.GetPosition(this).Y + mousePlayer.Height >= MainCanvas.Height)
-                return;
-            mousePlayer.Y = Mouse.GetPosition(this).Y;
-            mousePlayer.Draw();
         }
 
         private void Window_MouseMove(object sender, MouseEventArgs e) {
-
+            if (Mouse.GetPosition(this).Y + mousePlayer.Height >= MainCanvas.Height)
+                return;
+            mousePlayer.Y = Mouse.GetPosition(this).Y;
+            mousePlayer.Draw();      
         }
     }
 }
