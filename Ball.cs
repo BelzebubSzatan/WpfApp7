@@ -17,7 +17,7 @@ namespace WpfApp7 {
         public int DirectionX { get; set; }
         public int DirectionY { get; set; }
         public double Speed { get; set; }
-        public int Angle { get; set; }
+        public double Angle { get; set; }
         public Ellipse Shape { get; set; }
 
         public Ball(int width, int height, Canvas canvas) {
@@ -31,19 +31,30 @@ namespace WpfApp7 {
             };
             DirectionX = 1;
             DirectionY = 1;
+            X = canvas.Width / 2 - width / 2;
+            Y=canvas.Height/2 - height / 2;
             Speed = 3f;
+            Random r = new();
+            Angle = r.Next(30, 60) * Math.PI / 180;
             canvas.Children.Add(Shape);
         }
 
+        public void Move() {
+            X += Math.Cos(Angle) * Speed * DirectionX;
+            Y += Math.Cos(Angle) * Speed * DirectionY;
+            if(Y<=0||Y>=Canvas.Height)
+                DirectionY*=-1;
+
+            Draw();
+        }
+
         public void Draw() {
-            throw new NotImplementedException();
+            Canvas.SetLeft(Shape, X);
+            Canvas.SetTop(Shape, Y);
         }
 
         public void Reset() {
             throw new NotImplementedException();
         }
-    }
-
-    public class Elipse {
     }
 }
