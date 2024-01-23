@@ -42,7 +42,7 @@ namespace WpfApp7 {
         public void Move() {
             X += Math.Cos(Angle) * Speed * DirectionX;
             Y += Math.Cos(Angle) * Speed * DirectionY;
-            if(Y<=0||Y>=Canvas.Height)
+            if(Y+Width<=0||Y+Width>=Canvas.Height)
                 DirectionY*=-1;
 
             Draw();

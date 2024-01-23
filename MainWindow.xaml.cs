@@ -15,8 +15,10 @@ namespace WpfApp7 {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
+        Ball ball;
         public MainWindow() {
             InitializeComponent();
+            ball = new(10, 10, MainCanvas);
             DispatcherTimer timer = new();
             timer.Interval=TimeSpan.FromMilliseconds(16);
             timer.Tick += TimerTick;
@@ -24,7 +26,7 @@ namespace WpfApp7 {
         }
 
         private void TimerTick(object? sender, EventArgs e) {
-            throw new NotImplementedException();
+            ball.Move();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e) {
