@@ -15,9 +15,12 @@ namespace WpfApp7 {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
+        Ball ball;
         Player mousePlayer, keyboardPlayer;
+
         public MainWindow() {
             InitializeComponent();
+            ball = new(10, 10, MainCanvas);
             DispatcherTimer timer = new();
             mousePlayer = new(MainCanvas, 10, 100, new SolidColorBrush(Color.FromRgb(255, 255, 255)), false);
             keyboardPlayer = new(MainCanvas, 10, 100, new SolidColorBrush(Color.FromRgb(255, 255, 255)), true);
@@ -27,7 +30,7 @@ namespace WpfApp7 {
         }
 
         private void TimerTick(object? sender, EventArgs e) {
-            throw new NotImplementedException();
+            ball.Move();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e) {
