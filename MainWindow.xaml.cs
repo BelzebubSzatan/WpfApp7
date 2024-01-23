@@ -31,10 +31,14 @@ namespace WpfApp7 {
 
         private void TimerTick(object? sender, EventArgs e) {
             if (ball.X <= 0) {
-
+                mousePlayer.Points += 1;
+                ball.Reset();
+                UpdateScores();
             }
             if(ball.X>=MainCanvas.Width) {
-
+                keyboardPlayer.Points += 1;
+                ball.Reset();
+                UpdateScores();
             }
             if (ball.Y >= mousePlayer.Y && ball.Y <= mousePlayer.Y + mousePlayer.Height && ball.X >= mousePlayer.X - ball.Width && ball.X <= mousePlayer.X + mousePlayer.Width) {
                 ball.DirectionX *= -1;
