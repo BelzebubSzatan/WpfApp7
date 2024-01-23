@@ -46,7 +46,10 @@ namespace WpfApp7 {
             }
             ball.Move();
         }
-
+        void UpdateScores() {
+            MousePlayer.Content = mousePlayer.Points.ToString();
+            KeyboardPlayer.Content = keyboardPlayer.Points.ToString();
+        }
         private void Window_KeyDown(object sender, KeyEventArgs e) {
             switch(e.Key)
             {
@@ -64,6 +67,12 @@ namespace WpfApp7 {
                         return;
                     keyboardPlayer.Y += 10;
                     keyboardPlayer.Draw();
+                    break;
+                case Key.R:
+                    mousePlayer.Reset();
+                    keyboardPlayer.Reset();
+                    ball.Reset();
+                    UpdateScores();
                     break;
             }
         }
