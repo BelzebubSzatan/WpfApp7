@@ -54,7 +54,13 @@ namespace WpfApp7 {
         }
 
         public void Reset() {
-            throw new NotImplementedException();
+            DirectionX = 1;
+            DirectionY = 1;
+            X = Canvas.Width / 2 - Width / 2;
+            Y = Canvas.Height / 2 - Height / 2;
+            Speed = 3f;
+            Random r = new();
+            Angle = r.Next(30, 60) * Math.PI / 180;
         }
     }
 }
