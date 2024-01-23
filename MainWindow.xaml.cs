@@ -15,9 +15,12 @@ namespace WpfApp7 {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
+        Player mousePlayer, keyboardPlayer;
         public MainWindow() {
             InitializeComponent();
             DispatcherTimer timer = new();
+            mousePlayer = new(MainCanvas, 10, 100, new SolidColorBrush(Color.FromRgb(255, 255, 255)), false);
+            keyboardPlayer = new(MainCanvas, 10, 100, new SolidColorBrush(Color.FromRgb(255, 255, 255)), true);
             timer.Interval=TimeSpan.FromMilliseconds(16);
             timer.Tick += TimerTick;
             timer.Start();
@@ -28,7 +31,10 @@ namespace WpfApp7 {
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e) {
-
+            if (Mouse.GetPosition(this).Y + mousePlayer.Height >= MainCanvas.Height)
+                return;
+            mousePlayer.Y = Mouse.GetPosition(this).Y;
+            mousePlayer.Draw();
         }
 
         private void Window_MouseMove(object sender, MouseEventArgs e) {
